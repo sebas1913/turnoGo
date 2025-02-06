@@ -2,13 +2,14 @@
 
 .button {
     font-family: var(--font-principal);
-    padding: 0.3rem 1.1rem;
-    font-weight: 700;
-    font-size: 1rem;
+    padding: 0.45rem 0.6rem;
+    font-weight: 300;
+    font-size: 0.85rem;
     border-radius: 0.3rem;
     border: none;
     cursor: pointer;
     background-color: transparent;
+    width: 100%;
 
     &:active{
         transform: scale(0.95);
@@ -16,8 +17,10 @@
 }
 
 .primary {
-    color: $color-primary;
+    background-color: $color-primary;
+    color: $color-secondary;
     border: 0.1rem solid $color-primary;
+    border-radius: 2rem;
 }
 
 .secondary{
