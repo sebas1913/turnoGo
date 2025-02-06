@@ -1,19 +1,29 @@
 import styles from './input.module.scss';
 
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>{
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     placeholder?: string;
     type?: string;
+    name?: string;
+    error?: string;
 }
 
-const Input: React.FC<InputProps> = ({placeholder, type, ...props}) => {
-    return(
-        <input
-            className={styles.input}
-            placeholder={placeholder}
-            type={type}
-            {...props}
-        />
-    )
-}
-
-export default Input;
+export const Input = ({
+    placeholder,
+    type = "text",
+    name,
+    error,
+    ...props
+}: InputProps) => {
+    return (
+        <div className={styles.inputContainer}>
+            <input
+                type={type}
+                name={name}
+                placeholder={placeholder}
+                className={`${styles.inputField} ${error ? styles.error : ""}`}
+                {...props}
+            />
+            {error && <p className={styles.errorMessage}>{error}</p>}
+        </div>
+    );
+};
