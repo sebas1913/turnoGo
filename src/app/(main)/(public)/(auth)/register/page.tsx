@@ -1,7 +1,9 @@
+import RegisterForm from "@/UI/organisms/registerForm/registerForm";
+
 export default function Register(){
     return(
-        <div>
-            <h1>Registro</h1>
-        </div>
+        <>
+            <RegisterForm />
+        </>
     )
 }

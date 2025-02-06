@@ -13,14 +13,13 @@ const Layout = ({ children }: LayoutProps) => {
         <div className={styles.layoutContainer}>
             <Navbar>
                 <Link className={styles.link} href={'/login'}>
-                    <Button variant='primary'>Iniciar sesión</Button>
+                    <Button variant='transparent'>Iniciar sesión</Button>
                 </Link>
                 <Link className={styles.link} href={'/register'}>
-                    <Button variant='secondary'>Regístrate</Button>
+                    <Button variant='primary'>Regístrate</Button>
                 </Link>
             </Navbar>
             <main className={styles.main}>{children}</main>
-            {/* <Footer /> */}
         </div>
     );
 };
