@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Raleway } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "../styles/globals.scss";
 
-const raleway = Raleway({
-    variable: "--font-raleway",
+const font = Poppins({
+    variable: "--font-principal",
     subsets: ["latin"],
     weight: "500",
 });
@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={raleway.className}>
+            <body className={font.className}>
                 <main className="main">
                     {children}
                 </main>
