@@ -1,0 +1,29 @@
+:root {
+    --font-raleway: 'Raleway', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-raleway), sans-serif;
+    background-image: url('/assets/svg/background.svg');
+}
+
+.main {
+    width: 80%;
+    margin: auto;
+}
+
+@media (max-width: 600px) {
+    .main {
+        width: 92%;
+    }
+}

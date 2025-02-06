@@ -1,0 +1,10 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .navContainer{
+        display: flex;
+        gap: 0.5rem;
+    }
+}
