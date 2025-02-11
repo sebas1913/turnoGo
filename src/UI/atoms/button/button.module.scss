@@ -27,3 +27,19 @@
     color: $color-secondary;
     border: 0.1rem solid $color-secondary;
 }
+
+.banner{
+    background-color: $color-primary;
+    color: $color-tertiary;
+    border-radius: 2rem;
+    padding: 0.5rem 2rem;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .banner{
+        font-size: 0.8rem;
+        padding: 0.3rem 1rem;
+    }
+}
