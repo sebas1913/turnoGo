@@ -1,0 +1,27 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins.scss';
+
+.sliderContainer {
+    margin-top: 2.5rem;
+	margin-bottom: 2.5rem;
+
+    .cardContainer {
+        @include box-shadow();
+        border-radius: 0.5rem;
+        display: flex;
+		justify-content: center;
+		align-items: center;
+		box-sizing: border-box;
+		width: 100%;
+		height: 22rem;
+		margin: 2rem 0;
+
+		.image {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			border-radius: 0.5rem;
+		}
+		
+    }
+}
