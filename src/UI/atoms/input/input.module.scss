@@ -1,9 +1,12 @@
 @import '../../../styles/variables';
+@import '../../../styles/mixins.scss';
+
 
 .inputField{
+    @include box-shadow();
     font-family: var(--font-principal);
     padding: 0.5rem;
-    border: 1px solid $color-border;
+    border: none;
     border-radius: 0.2rem;
     width: 100%;
     margin-bottom: 0.5rem;
