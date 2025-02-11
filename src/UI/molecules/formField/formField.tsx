@@ -3,6 +3,7 @@
 import { Control, Controller, FieldError, FieldValues, Path } from "react-hook-form";
 import { Input } from "@/UI/atoms/input/Input";
 import Label from "@/UI/atoms/label/Label";
+import styles from './formField.module.scss';
 
 interface IPropsFormField<T extends FieldValues> {
     label: string;
@@ -24,7 +25,7 @@ export const FormField = <T extends FieldValues>({
     placeholder,
 }: IPropsFormField<T>) => {
     return (
-        <div>
+        <div className={styles.containerField}>
             <Label htmlFor={id || label.toLowerCase()}>{label}</Label>
             <Controller
             
