@@ -1,16 +1,16 @@
 export interface ILoginResponse {
     msg:    string;
-    role:   Role;
     tokens: Tokens;
-}
-
-export interface Role {
-    created_at: string;
-    id:         number;
-    name:       string;
+    user:   User;
 }
 
 export interface Tokens {
     access_token:  string;
     refresh_token: string;
+}
+
+export interface User {
+    id:   number;
+    name: string;
+    role: string;
 }
