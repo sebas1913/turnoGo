@@ -1,0 +1,46 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins.scss';
+
+
+.containerForm{
+    @include box-shadow();
+    background-color: $color-tertiary;
+    padding: 2rem;
+    width: 35%;
+    margin: auto;
+    border-radius: 1rem;
+
+    .buttonForm{
+        text-align: center;
+        margin: 1rem 0;
+    }
+
+    .title{
+        text-align: center;
+    }
+
+    .footerForm{
+        display: flex;
+        justify-content: center;
+
+        .link{
+            color: $color-secondary;
+        }
+    }
+
+    .errorMessage{
+        font-size: 0.9rem;
+        color: $color-error;
+        margin-bottom: 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .containerForm{
+        width: 90%;
+
+        .footerForm{
+            font-size: 0.75rem;
+        }
+    }
+}
