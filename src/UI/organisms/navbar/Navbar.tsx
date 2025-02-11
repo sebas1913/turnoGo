@@ -10,7 +10,7 @@ const Navbar: React.FC<NavbarProps> = ({ children }) => {
     return (
         <div className={styles.container}>
             <Link className={styles.link} href={'#'}>
-                <Title level={2}>TurnoGo</Title>
+                <Title className={styles.title} level={2}>El Barbero</Title>
             </Link>
             <nav className={styles.navContainer}>
                 {children}
