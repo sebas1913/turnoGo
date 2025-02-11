@@ -49,7 +49,7 @@ const RegisterForm = () => {
                 const errorData: { msg: string } = await response.json();
 
                 if (errorData.msg) {
-                    console.log(errorData.msg);
+                    console.error(errorData.msg);
                 }
 
                 return;
