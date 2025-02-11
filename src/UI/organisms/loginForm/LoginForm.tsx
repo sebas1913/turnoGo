@@ -63,7 +63,7 @@ const LoginForm = () => {
     
             router.push('/dashboard');
     
-        } catch (error) {
+        } catch {
             setBackendError("Error de conexión con el servidor");
         }
     };

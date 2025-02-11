@@ -1,7 +1,7 @@
+import CredentialsProvider from "next-auth/providers/credentials";
+import NextAuth, { NextAuthOptions, User } from "next-auth";
 import { ILoginRequest } from "@/app/core/application/dto/login/login-request.dto";
 import { AuthService } from "@/app/infrastructure/services/auth.service";
-import NextAuth, { NextAuthOptions, Session, User } from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
 import { ILoginResponse } from "@/app/core/application/dto/login/login-response.dto";
 
 interface AuthUser extends User {
@@ -11,7 +11,7 @@ interface AuthUser extends User {
     role: string;
 }
 
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
     providers: [
         CredentialsProvider({
             name: "Credentials",
@@ -48,11 +48,7 @@ export const authOptions: NextAuthOptions = {
                     };
 
                     return user;
-                } catch (error) {
-                    if (error instanceof Error && error.message.includes("Network Error")) {
-                        throw new Error("No se pudo conectar con el servidor");
-                    }
-                    
+                } catch {
                     throw new Error("Credenciales inválidas");
                 }
             },
@@ -89,5 +85,6 @@ export const authOptions: NextAuthOptions = {
     },
 };
 
-export const GET = NextAuth(authOptions);
-export const POST = NextAuth(authOptions);
+const handler = NextAuth(authOptions);
+
+export { handler as GET, handler as POST };

@@ -1,4 +1,3 @@
-import Button from '@/UI/atoms/button/Button';
 import Banner from '@/UI/organisms/banner/Banner';
 import Slider from "@/UI/organisms/slider/slider";
 
