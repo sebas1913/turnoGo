@@ -11,6 +11,7 @@ import Button from "@/UI/atoms/button/Button";
 import styles from './register.module.scss';
 import Link from "next/link";
 import Paragraph from "@/UI/atoms/paragraph/Paragraph";
+import { Icons } from "@/UI/atoms/icons/Icons";
 
 const registerSchema = yup.object().shape({
     name: yup.string().required('Por favor, ingresa tu nombre'),
@@ -110,6 +111,13 @@ const RegisterForm = () => {
                     <Paragraph>¿Ya tienes cuenta?, Inicia sesión <Link className={styles.link} href={'/login'}>aquí.</Link></Paragraph>
                 </div>
             </form>
+            <div className={styles.icons}>
+                {Icons.scissors}
+                {Icons.razor}
+                {Icons.beard}
+                {Icons.comb}
+                {Icons.spray}
+            </div>
         </div>
     );
 };
