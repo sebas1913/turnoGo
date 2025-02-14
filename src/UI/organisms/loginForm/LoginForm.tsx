@@ -12,6 +12,8 @@ import styles from './login.module.scss';
 import Title from "@/UI/atoms/title/Title";
 import Button from "@/UI/atoms/button/Button";
 import Paragraph from "@/UI/atoms/paragraph/Paragraph";
+import { Icons } from "@/UI/atoms/icons/Icons";
+import Link from "next/link";
 
 const loginSchema = yup.object().shape({
     email: yup
@@ -40,15 +42,15 @@ const LoginForm = () => {
 
     const handleLogin = async (data: ILoginRequest) => {
         setBackendError(null);
-    
+
         try {
             const result = await signIn("credentials", {
                 redirect: false,
                 email: data.email,
                 password: data.password
             });
-    
-            if (result?.error) {    
+
+            if (result?.error) {
                 let errorMessage = "Ocurrió un error inesperado";
                 try {
                     const errorData = JSON.parse(result.error);
@@ -56,18 +58,18 @@ const LoginForm = () => {
                 } catch {
                     errorMessage = result.error;
                 }
-    
+
                 setBackendError(errorMessage);
                 return;
             }
-    
+
             router.push('/dashboard');
-    
+
         } catch {
             setBackendError("Error de conexión con el servidor");
         }
     };
-    
+
 
     return (
         <div className={styles.containerForm}>
@@ -94,8 +96,21 @@ const LoginForm = () => {
 
                 {backendError && <Paragraph className={styles.errorMessage}>{backendError}</Paragraph>}
 
-                <Button variant="primary" type="submit">Iniciar sesión</Button>
+                <div className={styles.buttonForm}>
+                    <Button variant="primary" type="submit">Iniciar sesión</Button>
+                </div>
+
+                <div className={styles.footerForm}>
+                    <Paragraph>¿No tienes cuenta?, Regístrate <Link className={styles.link} href={'/register'}>aquí.</Link></Paragraph>
+                </div>
             </form>
+            <div className={styles.icons}>
+                {Icons.scissors}
+                {Icons.razor}
+                {Icons.beard}
+                {Icons.comb}
+                {Icons.spray}
+            </div>
         </div>
     );
 }

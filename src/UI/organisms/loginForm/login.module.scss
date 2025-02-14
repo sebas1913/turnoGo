@@ -10,8 +10,19 @@
     margin: auto;
     border-radius: 1rem;
 
+    .icons{
+        margin: 1.2rem 0 0 0;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+        svg{
+            font-size: 1.2rem;
+            color: $color-primary
+        }
+    }
+
     .buttonForm{
-        text-align: center;
         margin: 1rem 0;
     }
 
@@ -37,7 +48,11 @@
 
 @media (max-width: 768px) {
     .containerForm{
-        width: 90%;
+        width: 100%;
+
+        .title{
+            font-size: 1.2rem;
+        }
 
         .footerForm{
             font-size: 0.75rem;
