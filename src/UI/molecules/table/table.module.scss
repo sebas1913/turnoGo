@@ -1,0 +1,49 @@
+@import '../../../styles/variables';
+
+.container {
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   width: 100%;
+
+
+   
+    .table {
+        border-collapse: collapse;
+        margin: 0.5rem 0;
+        font-size: 0.9rem;
+        flex-grow: 1;
+        cursor: pointer;
+
+        thead {
+            background-color: $color-primary;
+            color: $color-tertiary;
+            font-size: 1.05rem;
+            text-align: left;
+
+            th {
+                padding: 0.4rem;
+            }
+        }
+
+        tbody {
+      
+            tr:hover {
+                background-color: $color-table-hover;
+            }
+
+            td {
+                padding: 0.6rem;
+                border-bottom: 0.1rem solid $color-border;
+            }
+        }
+
+    }
+}
+
+@media (max-width: 768px) {
+    .container{
+        width: 95%;
+    }
+}
+
