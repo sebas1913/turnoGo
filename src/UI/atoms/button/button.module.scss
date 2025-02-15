@@ -1,5 +1,6 @@
 @import '../../../styles/variables';
 
+
 .button {
     font-family: var(--font-principal);
     padding: 0.45rem 0.6rem;
@@ -18,7 +19,7 @@
 
 .primary {
     background-color: $color-primary;
-    color: $color-secondary;
+    color: $color-tertiary;
     border: 0.1rem solid $color-primary;
     border-radius: 2rem;
 }
@@ -35,6 +36,31 @@
     padding: 0.5rem 2rem;
     font-weight: 500;
     font-size: 1rem;
+}
+
+.modal{
+    background-color: transparent;
+    padding: 0.1rem;
+    color: $color-primary;
+
+    svg{
+        font-size: 2.1rem;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.pagination{
+    width: auto;
+    background-color: $color-primary;
+    padding: 0.1rem;
+    color: $color-tertiary;
+
+    svg{
+        font-size: 1.4rem;
+        display: flex;
+        align-items: center;
+    }
 }
 
 @media (max-width: 768px) {
