@@ -1,0 +1,28 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins.scss';
+
+.container{
+    @include box-shadow();
+    padding: 2rem;
+    border-radius: 0.5rem;
+
+    .paragraph{
+        font-size: 0.95rem;
+    }
+
+    .containerButton{
+        margin: 0.8rem 0;
+    }
+
+    .icons{
+        margin-top: 2rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        svg{
+            font-size: 2rem;
+            color: $color-primary
+        }
+    }
+}
