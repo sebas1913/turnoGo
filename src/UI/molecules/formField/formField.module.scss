@@ -1,3 +1,11 @@
 .containerField{
     padding: 0.1rem 0;
 }
+
+@media (max-width: 768px) {
+    .containerField{
+        .label{
+            font-size: 0.8rem;
+        }
+    }
+}

@@ -26,9 +26,8 @@ export const FormField = <T extends FieldValues>({
 }: IPropsFormField<T>) => {
     return (
         <div className={styles.containerField}>
-            <Label htmlFor={id || label.toLowerCase()}>{label}</Label>
+            <Label className={styles.label} htmlFor={id || label.toLowerCase()}>{label}</Label>
             <Controller
-            
                 name={name}
                 control={control}
                 render={({ field }) => (
