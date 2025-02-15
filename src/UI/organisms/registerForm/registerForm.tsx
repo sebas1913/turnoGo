@@ -12,6 +12,7 @@ import styles from './register.module.scss';
 import Link from "next/link";
 import Paragraph from "@/UI/atoms/paragraph/Paragraph";
 import { Icons } from "@/UI/atoms/icons/Icons";
+import Swal from "sweetalert2";
 
 const registerSchema = yup.object().shape({
     name: yup.string().required('Por favor, ingresa tu nombre'),
@@ -50,15 +51,33 @@ const RegisterForm = () => {
                 const errorData: { msg: string } = await response.json();
 
                 if (errorData.msg) {
-                    console.error(errorData.msg);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Error",
+                        text: errorData.msg,
+                    });
                 }
-
                 return;
             }
 
+            await Swal.fire({
+                icon: 'success',
+                title: 'Usuario creado!',
+                text: 'Tu usuario ha sido creado exitosamente.',
+                confirmButtonText: 'Aceptar',
+                confirmButtonColor: '#fc9137',
+            });
+
             router.push("/login");
+
         } catch (error) {
             console.error("Error en el registro:", error);
+            Swal.fire({
+                icon: "error",
+                title: "Error :(",
+                text: "Hubo un problema al registrar tu usuario.",
+                confirmButtonColor: '#fc9137'
+            });
         }
     };
 
