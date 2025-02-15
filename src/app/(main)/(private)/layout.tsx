@@ -10,37 +10,34 @@ export default function PrivateLayout({ children }: { children: React.ReactNode 
     const { data: session, status } = useSession();
     const router = useRouter();
     const pathname = usePathname();
-    const [isRedirecting, setIsRedirecting] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         if (status === "loading") return;
 
         if (!session) {
-            setIsRedirecting(true);
             router.replace("/login");
             return;
         }
 
         if (session.user.role === "ADMIN" && pathname !== "/dashboard") {
-            setIsRedirecting(true);
             router.replace("/dashboard");
             return;
         }
 
         if (session.user.role !== "ADMIN" && pathname !== "/users") {
-            setIsRedirecting(true);
             router.replace("/users");
             return;
         }
 
-        setIsRedirecting(false);
+        setIsLoading(false);
     }, [session, status, pathname, router]);
 
     const handleSignOut = async () => {
         await signOut({ callbackUrl: "/" });
     };
 
-    if (status === "loading" || isRedirecting) {
+    if (status === "loading" || isLoading) {
         return <Spinner />;
     }
 
