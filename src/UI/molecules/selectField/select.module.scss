@@ -1,0 +1,12 @@
+@import '../../../styles/mixins.scss';
+@import '../../../styles/variables';
+
+.select{
+    @include box-shadow();
+    font-family: var(--font-principal);
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.2rem;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
