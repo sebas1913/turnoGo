@@ -21,7 +21,7 @@ export class ServicesService{
 
     async create(body: IServiceRequest) {
         try {
-            const newService = await this.httpClient.post<IServiceResponse, IServiceRequest>('/services', body);
+            const newService = await this.httpClient.post<IServiceResponse, IServiceRequest>('/admin/services', body);
             return newService;
         } catch (error) {
             console.log("Error al crear el servicio:", error);
