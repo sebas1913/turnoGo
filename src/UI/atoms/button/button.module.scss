@@ -60,10 +60,10 @@
 }
 
 .canceled{
-    width: auto;
     border: 0.1rem solid $color-canceled;
     color: $color-canceled;
     font-size: 1.1rem;
+    padding: 0;
 
     &:hover{
         background-color: $color-canceled;
@@ -73,11 +73,10 @@
 }
 
 .confirmed{
-    width: auto;
     border: 0.1rem solid $color-confirmed;
     color: $color-confirmed;
     font-size: 1.1rem;
-
+    padding: 0;
 
     &:hover{
         background-color: $color-confirmed;
