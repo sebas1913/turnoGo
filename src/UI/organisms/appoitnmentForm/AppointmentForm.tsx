@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import * as yup from "yup";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
@@ -14,7 +15,16 @@ import styles from "./appointment.module.scss";
 
 const appointmentSchema = yup.object().shape({
     service_id: yup.number().required("Debes seleccionar un servicio"),
-    date: yup.string().required("Debes seleccionar una fecha"),
+    date: yup
+        .string()
+        .required("Debes seleccionar una fecha")
+        .test("is-future-date", "No puedes seleccionar esta fecha", (value) => {
+            if (!value) return false;
+            const selectedDate = new Date(value);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            return selectedDate >= today;
+        }),
     time: yup.string().required("Debes seleccionar una hora"),
 });
 
@@ -28,6 +38,8 @@ interface AppointmentFormProps {
 }
 
 const AppointmentForm: React.FC<AppointmentFormProps> = ({ onClose }) => {
+    const router = useRouter();
+
     const {
         handleSubmit,
         control,
@@ -66,10 +78,9 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({ onClose }) => {
 
             onClose();
 
-    
             if (!response.ok) {
                 const errorData: { msg: string } = await response.json();
-    
+
                 if (errorData.msg) {
                     Swal.fire({
                         icon: "error",
@@ -77,10 +88,10 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({ onClose }) => {
                         text: errorData.msg,
                     });
                 }
-    
+
                 return;
             }
-    
+
             await Swal.fire({
                 icon: 'success',
                 title: '¡Cita creada!',
@@ -88,7 +99,9 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({ onClose }) => {
                 confirmButtonText: 'Aceptar',
                 confirmButtonColor: '#fc9137',
             });
-        
+
+            router.refresh();
+
         } catch (error) {
             console.error(error);
             Swal.fire({
@@ -99,11 +112,11 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({ onClose }) => {
             });
         }
     };
-    
 
     return (
         <form onSubmit={handleSubmit(handleAppointment)}>
             <Title className={styles.title} level={2}>Agenda tu cita</Title>
+
             <SelectField
                 control={control}
                 name="service_id"
@@ -122,7 +135,7 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({ onClose }) => {
                 name="date"
                 error={errors.date}
                 placeholder="Ingresa la fecha de tu cita"
-                
+                min={new Date().toISOString().split("T")[0]} // Evita fechas pasadas
             />
 
             <FormField
