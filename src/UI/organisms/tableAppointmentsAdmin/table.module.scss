@@ -1,0 +1,49 @@
+@import '../../../styles/variables';
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+
+    svg {
+        font-size: 1.5rem;
+    }
+}
+
+.actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.pending,
+.canceled,
+.confirmed {
+    display: inline-block;
+    width: 5.5rem;
+    text-align: center;
+    padding: 0.25rem;
+    border-radius: 1rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    font-size: 0.8rem;
+    color: $color-tertiary;
+}
+
+.pending {
+    background-color: $color-pending;
+}
+
+.canceled {
+    background-color: $color-canceled;
+}
+
+.confirmed {
+    background-color: $color-confirmed;
+}
