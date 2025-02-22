@@ -13,6 +13,8 @@ interface IPropsFormField<T extends FieldValues> {
     error?: FieldError;
     id?: string;
     placeholder?: string;
+    min?: string;
+    max?: string;
 }
 
 export const FormField = <T extends FieldValues>({
@@ -23,6 +25,8 @@ export const FormField = <T extends FieldValues>({
     error,
     id,
     placeholder,
+    min,
+    max,
 }: IPropsFormField<T>) => {
     return (
         <div className={styles.containerField}>
@@ -39,10 +43,13 @@ export const FormField = <T extends FieldValues>({
                             id={id || label.toLowerCase()}
                             type={type}
                             placeholder={placeholder || `Ingresa tu ${label.toLowerCase()}`}
+                            min={min}
+                            max={max}
                         />
                     </>
                 )}
             />
+            {error && <p className={styles.errorMessage}>{error.message}</p>}
         </div>
     );
 };
