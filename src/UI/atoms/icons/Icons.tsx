@@ -10,7 +10,15 @@ import { GiRazor } from "react-icons/gi";
 import { PiSprayBottleFill } from "react-icons/pi";
 import { IoIosCloseCircle } from "react-icons/io";
 import { MdEventAvailable } from "react-icons/md";
-
+import { MdOutlineAttachMoney } from "react-icons/md";
+import { IoIosAddCircle } from "react-icons/io";
+import { HiOutlineMail } from "react-icons/hi";
+import { FaRegUser } from "react-icons/fa";
+import { LuScrollText } from "react-icons/lu";
+import { FiEdit3 } from "react-icons/fi";
+import { IoCheckmarkSharp } from "react-icons/io5";
+import { VscChromeClose } from "react-icons/vsc";
+import { AiOutlineDelete } from "react-icons/ai";
 
 
 export const Icons = {
@@ -25,5 +33,14 @@ export const Icons = {
     razor: <GiRazor />,
     spray: <PiSprayBottleFill />,
     close: <IoIosCloseCircle />,
-    event: <MdEventAvailable />
+    event: <MdEventAvailable />,
+    price: <MdOutlineAttachMoney />,
+    add: <IoIosAddCircle />,
+    email: <HiOutlineMail />,
+    user: <FaRegUser />,
+    description: <LuScrollText />,
+    edit: <FiEdit3 />,
+    confirm: <IoCheckmarkSharp />,
+    cancel: <VscChromeClose />,
+    delete: <AiOutlineDelete />
 }
