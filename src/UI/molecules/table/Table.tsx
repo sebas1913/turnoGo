@@ -3,7 +3,7 @@ import styles from './table.module.scss';
 import Title from '@/UI/atoms/title/Title';
 
 export interface TableProps extends React.TableHTMLAttributes<HTMLTableElement> {
-    title: string;
+    title?: string;
     headers: { label: React.ReactNode; key: string }[];
     data: { [key: string]: unknown | JSX.Element }[];
 }

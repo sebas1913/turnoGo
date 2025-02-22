@@ -1,33 +1,38 @@
 @import '../../../styles/variables';
 
 .container {
-   display: flex;
-   justify-content: center;
-   flex-direction: column;
-   width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 75%;
+    margin: auto;
 
 
-   
     .table {
         border-collapse: collapse;
-        margin: 0.5rem 0;
-        font-size: 0.9rem;
-        flex-grow: 1;
+        margin: 1rem 0;
+        font-size: 1rem;
+        width: 100%;
+        table-layout: auto;
         cursor: pointer;
+        border-radius: 0.5rem;
+        overflow: hidden;
 
         thead {
             background-color: $color-primary;
             color: $color-tertiary;
             font-size: 1.05rem;
-            text-align: left;
 
             th {
                 padding: 0.4rem;
+                font-weight: 400;
+                font-size: 1.1rem;
+                text-align: center;
             }
         }
 
         tbody {
-      
+
             tr:hover {
                 background-color: $color-table-hover;
             }
@@ -42,8 +47,7 @@
 }
 
 @media (max-width: 768px) {
-    .container{
+    .container {
         width: 95%;
     }
 }
-
