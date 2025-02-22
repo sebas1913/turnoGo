@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { IAppointmentResponse } from "@/app/core/application/dto/appointment/appointment-response.dto";
 import styles from "./template.module.scss";
 import UserGreeting from "@/UI/molecules/userGreeting/UserGreeting";
-import TableAppointments from "@/UI/organisms/tableAppointments/TableAppointments";
+import TableAppointmentsUsers from '@/UI/organisms/tableAppointmentsUsers/TableAppointmentsUsers';
 import Modal from '@/UI/organisms/modal/Modal';
 import AppointmentForm from '@/UI/organisms/appoitnmentForm/AppointmentForm';
 
@@ -25,7 +25,7 @@ const UserTemplate: React.FC<IProps> = ({ dataResponse }) => {
                     <UserGreeting openModal={openModal} />
                 </div>
                 <div className={styles.content}>
-                    <TableAppointments dataResponse={dataResponse} />
+                    <TableAppointmentsUsers dataResponse={dataResponse} />
                 </div>
             </div>
 
