@@ -27,16 +27,16 @@ const TableAppointmentsUsers: React.FC<TableProps> = ({ dataResponse }) => {
         date: appointment.date,
         time: appointment.time,
         status: (
-            <span className={appointment.status === "pending" ? styles.pending : ""}>
+            <span
+                className={`
+                    ${appointment.status === "pending" ? styles.pending : ""}
+                    ${appointment.status === "confirmed" ? styles.confirmed : ""}
+                    ${appointment.status === "canceled" ? styles.canceled : ""}
+                `}
+            >
                 {appointment.status}
             </span>
         )
-        // ),
-        // actions: (
-        //     <div className={styles.actions}>
-        //         <Button variant="transparent">{Icons.edit}</Button>
-        //     </div>
-        // )
     }));
 
     const headers = [

@@ -15,10 +15,9 @@ const TableAppointmentsAdmin: React.FC<TableProps> = ({ dataResponse }) => {
 
     const itemsPerPage = 5;
     const [currentPage, setCurrentPage] = useState(1);
-    const [appointments] = useState(dataResponse);
 
     // Ordenar las citas por fecha de más reciente a más antigua
-    const sortedData = [...appointments].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    const sortedData = [...dataResponse].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
     // Calcular el total de páginas
     const totalPages = Math.ceil(sortedData.length / itemsPerPage);
@@ -36,12 +35,11 @@ const TableAppointmentsAdmin: React.FC<TableProps> = ({ dataResponse }) => {
                 },
                 body: JSON.stringify({ status: newStatus }),
             });
+            router.refresh();
 
             if (!response.ok) {
                 throw new Error("Error al actualizar el estado");
             }
-
-            router.refresh();
 
         } catch (error) {
             console.error("Error al actualizar el estado:", error);
@@ -66,10 +64,10 @@ const TableAppointmentsAdmin: React.FC<TableProps> = ({ dataResponse }) => {
             <div className={styles.actions}>
                 {appointment.status === "pending" && (
                     <>
-                        <Button variant="confirmed" onClick={() => handleUpdateStatus(appointment.id, "confirmed")}>
+                        <Button variant="confirmed" title="Confirmar cita" onClick={() => handleUpdateStatus(appointment.id, "confirmed")}>
                             {Icons.confirm}
                         </Button>
-                        <Button variant="canceled" onClick={() => handleUpdateStatus(appointment.id, "canceled")}>
+                        <Button variant="canceled" title="Cancelar cita" onClick={() => handleUpdateStatus(appointment.id, "canceled")}>
                             {Icons.cancel}
                         </Button>
                     </>
@@ -82,7 +80,7 @@ const TableAppointmentsAdmin: React.FC<TableProps> = ({ dataResponse }) => {
         { label: <span className={styles.header}>{Icons.calendar} Fecha</span>, key: "date" },
         { label: <span className={styles.header}>{Icons.time} Hora</span>, key: "time" },
         { label: <span className={styles.header}>{Icons.status} Estado</span>, key: "status" },
-        { label: <span className={styles.header}>{Icons.edit} Editar</span>, key: "actions" },
+        { label: <span className={styles.header}>Editar</span>, key: "actions" },
     ];
 
     const nextPage = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));

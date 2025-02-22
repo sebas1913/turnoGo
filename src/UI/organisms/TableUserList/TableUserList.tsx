@@ -1,5 +1,7 @@
 "use client";
 
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { IUsersResponse } from "@/app/core/application/dto/users/users-response.dto";
 import { Icons } from "@/UI/atoms/icons/Icons";
@@ -12,6 +14,8 @@ interface TableProps {
 }
 
 const TableUserList: React.FC<TableProps> = ({ dataResponseUsers }) => {
+    const router = useRouter();
+
     const itemsPerPage = 5;
     const [currentPage, setCurrentPage] = useState(1);
 
@@ -21,6 +25,38 @@ const TableUserList: React.FC<TableProps> = ({ dataResponseUsers }) => {
     // Obtener los datos de la página actual
     const startIndex = (currentPage - 1) * itemsPerPage;
     const paginatedData = dataResponseUsers.slice(startIndex, startIndex + itemsPerPage);
+
+    const handleDelete = async (id: number) => {
+        const result = await Swal.fire({
+            title: "¿Estás seguro?",
+            text: "No podrás revertir esta acción.",
+            icon: "warning",
+            background: "#ffffff",
+            color: "#000000",
+            showCancelButton: true,
+            confirmButtonColor: "#fc9137",
+            cancelButtonColor: "#000000",
+            confirmButtonText: "Sí, eliminar",
+            cancelButtonText: "Cancelar",
+        });
+        
+
+         if (result.isConfirmed) {
+            try {
+                const response = await fetch(`/api/users/delete/${id}`, 
+                    { method: "DELETE" }
+                );
+
+                if (response.ok) {
+                    Swal.fire("Eliminado", "El usuario ha sido eliminado.", "success");
+                    router.refresh();
+                }
+            } catch (error) {
+                Swal.fire("Error", "Hubo un problema al eliminar el usuario.", "error");
+                console.error("Error al eliminar:", error);
+            }
+        }
+    };
 
     // Formatear datos para la tabla
     const formattedData = paginatedData.map((user) => ({
@@ -34,12 +70,19 @@ const TableUserList: React.FC<TableProps> = ({ dataResponseUsers }) => {
             minute: "2-digit",
             hour12: false,
         }),
+        actions: (
+            <div className={styles.actions}>
+                <Button variant="canceled" onClick={() => handleDelete(user.id)}>{Icons.delete}</Button>
+            </div>
+        ),
     }));
     // Encabezados de la tabla
     const headers = [
         { label: <span className={styles.header}>{Icons.user} Name</span>, key: "name" },
         { label: <span className={styles.header}>{Icons.email} Correo</span>, key: "email" },
-        { label: <span className={styles.header}>{Icons.calendar} Fecha de registro</span>, key: "date" },
+        { label: <span className={styles.header}>{Icons.calendar} Registro</span>, key: "date" },
+        { label: <span className={styles.header}>Acciones</span>, key: "actions" },
+        
     ];
 
     const nextPage = () => setCurrentPage((prev) => Math.min(prev + 1, totalPages));

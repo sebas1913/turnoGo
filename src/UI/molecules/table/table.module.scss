@@ -21,7 +21,6 @@
         thead {
             background-color: $color-primary;
             color: $color-tertiary;
-            font-size: 1.05rem;
 
             th {
                 padding: 0.4rem;
@@ -48,6 +47,28 @@
 
 @media (max-width: 768px) {
     .container {
-        width: 95%;
+        width: 100%;
+
+        .title {
+            font-size: 1rem;
+        }
+
+        .table {
+            margin: 0.5rem;
+
+            thead {
+                th {
+                    font-size: 0.8rem;
+                }
+            }
+
+            tbody{
+                td{
+                    padding: 0.5rem;
+                }
+            }
+
+            font-size: 0.7rem;
+        }
     }
 }
