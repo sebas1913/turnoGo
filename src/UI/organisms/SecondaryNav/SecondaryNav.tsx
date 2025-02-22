@@ -13,7 +13,7 @@ const SecondaryNav: React.FC = () => {
                     href="/dashboard/appointments"
                     className={`${styles.link} ${pathname === '/dashboard/appointments' ? styles.active : ''}`}
                 >
-                    Citas programadas
+                    Citas
                 </Link>
                 <Link
                     href="/dashboard/services"
@@ -25,7 +25,7 @@ const SecondaryNav: React.FC = () => {
                     href="/dashboard/usersList"
                     className={`${styles.link} ${pathname === '/dashboard/usersList' ? styles.active : ''}`}
                 >
-                    Listado usuarios
+                    Usuarios
                 </Link>
             </nav>
         </div>
