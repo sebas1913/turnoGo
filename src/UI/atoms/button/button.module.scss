@@ -5,7 +5,7 @@
     font-family: var(--font-principal);
     padding: 0.45rem 0.6rem;
     font-weight: 300;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     border-radius: 0.3rem;
     border: none;
     cursor: pointer;
@@ -22,6 +22,15 @@
     color: $color-tertiary;
     border: 0.1rem solid $color-primary;
     border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+
+    svg{
+        font-size: 1.5rem;
+        display: flex;
+    }  
 }
 
 .secondary{
@@ -47,6 +56,34 @@
         font-size: 2.1rem;
         display: flex;
         align-items: center;
+    }
+}
+
+.canceled{
+    width: auto;
+    border: 0.1rem solid $color-canceled;
+    color: $color-canceled;
+    font-size: 1.1rem;
+
+    &:hover{
+        background-color: $color-canceled;
+        color: $color-tertiary;
+        border: 0.1rem solid $color-canceled;
+    }
+}
+
+.confirmed{
+    width: auto;
+    border: 0.1rem solid $color-confirmed;
+    color: $color-confirmed;
+    font-size: 1.1rem;
+
+
+    &:hover{
+        background-color: $color-confirmed;
+        color: $color-tertiary;
+        border: none;
+        border: 0.1rem solid $color-confirmed;
     }
 }
 

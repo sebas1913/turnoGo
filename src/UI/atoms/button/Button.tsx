@@ -1,7 +1,7 @@
 import styles from './button.module.scss';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
-    variant: 'primary' | 'secondary' | 'banner' | 'transparent' | 'pagination' | 'modal';
+    variant: 'primary' | 'secondary' | 'banner' | 'transparent' | 'pagination' | 'modal' | 'canceled' | 'confirmed';
 }
 
 const Button: React.FC<ButtonProps> = ({ variant, children, ...props }) => {
