@@ -1,4 +1,11 @@
 .containerButton{
     width: 15%;
-    margin: 1rem 12% ;
+    margin: 1rem 12%;
+}
+
+@media (max-width: 768px) {
+    .containerButton{
+        width: 45%;
+        margin: 0.5rem 0%;
+    }
 }
