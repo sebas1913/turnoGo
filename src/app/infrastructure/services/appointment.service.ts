@@ -28,4 +28,15 @@ export class AppointmentService {
             throw error;
         }
     }
+
+    async put(id: number, body: IAppointmentRequest) {
+		try {
+            const response = this.httpClient.put<IAppointmentResponse, IAppointmentRequest>(`/admin/appointments/${id}`, body);
+			return response;
+
+		} catch (error) {
+			console.log(error);
+			throw error;
+		}
+	}
 }
