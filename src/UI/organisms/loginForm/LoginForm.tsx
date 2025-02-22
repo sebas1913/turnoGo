@@ -42,14 +42,14 @@ const LoginForm = () => {
 
     const handleLogin = async (data: ILoginRequest) => {
         setBackendError(null);
-
+    
         try {
             const result = await signIn("credentials", {
                 redirect: false,
                 email: data.email,
                 password: data.password
             });
-
+    
             if (result?.error) {
                 let errorMessage = "Ocurrió un error inesperado";
                 try {
@@ -58,17 +58,24 @@ const LoginForm = () => {
                 } catch {
                     errorMessage = result.error;
                 }
-
+    
                 setBackendError(errorMessage);
                 return;
             }
-
-            router.push('/dashboard');
-
+    
+            const session = await fetch("/api/auth/session").then((res) => res.json());
+    
+            if (session?.user?.role === "ADMIN") {
+                router.push("/dashboard/appointments");
+            } else {
+                router.push("/users");
+            }
+    
         } catch {
             setBackendError("Error de conexión con el servidor");
         }
     };
+    
 
 
     return (
